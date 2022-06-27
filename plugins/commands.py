@@ -1,6 +1,6 @@
 import os
 import logging
-
+from database.db import Database
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -9,28 +9,32 @@ from utils import Media, unpack_new_file_id
 
 logger = logging.getLogger(__name__)
 
-@Client.on_message(filters.command('start'))
-async def start(bot, message):
-    """Start command handler"""
-    if len(message.command) > 1 and message.command[1] == 'subscribe':
-        await message.reply(INVITE_MSG)
-    else:
-        buttons = [
-            [
-                InlineKeyboardButton('👑Apk Database👑', url='https://t.me/EpicApkDatabase'),
-                InlineKeyboardButton('👩‍💻Bot Devs👩‍💻', callback_data="DevsCallback")
-            ],
-            [
-                InlineKeyboardButton('</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰', url='https://t.me/EpicBotsSl')
-            ],
-            [
-                InlineKeyboardButton('🔍Search here🔄', switch_inline_query_current_chat=''),
-                InlineKeyboardButton('↗️Go inline↗️', switch_inline_query='')
-            ]
-        ]
+@Client.on_message(filters.command("start"))
+async def startprivate(client, message):
+    #return
+    chat_id = message.from_user.id
+    if not await db.is_user_exist(chat_id):
+        data = await client.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
+        if -1001645328504:
+            await client.send_message(
+                -1001645328504,
+                f"#NEWUSER: \n\n**User:** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n\**ID:**{message.from_user.id}\n Started @{BOT_USERNAME} !!",
+            )
+        else:
+            logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
+    file_id = "CAADBQADowwAAretqFR36va45QlD0gI"
+    await client.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
+    text = f"Hi {message.from_user.mention}, Welcome to  MemeHub Telegram 🇱🇰 Official Bot"
+    reply_markup = START_BUTTON  
+    await message.reply_text(
+        text=text,
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
+    )
         
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_sticker(("CAACAgUAAxkBAAEFHD5itTEihLwB5gABPP58guE5OLp9JRoAArQFAAIiWKlVyHUsM5q363opBA"), caption=START_MSG, reply_markup=reply_markup)
 
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
