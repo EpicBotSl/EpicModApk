@@ -1,4 +1,56 @@
-@Client.on_message(filters.incoming & filters.chat(-1001645439750))
+import re
+import uuid
+import socket
+import platform
+import time
+import math
+import json
+import string
+import traceback
+import psutil
+import asyncio
+import wget
+import motor.motor_asyncio
+import pymongo
+import aiofiles
+import datetime
+import os
+import random
+import logging
+from pyrogram.errors.exceptions.bad_request_400 import *
+from pyrogram.errors import *
+from pyrogram.types import *
+from helper.decorators import humanbytes
+from asyncio import *
+import requests
+from utils.database import Database
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import *
+from pyrogram.types import Message
+
+from info import START_MSG, CHANNELS, ADMINS, INVITE_MSG, DATABASE_URI, PRIVATE_LOG
+from utils import Media, unpack_new_file_id
+
+logger = logging.getLogger(__name__)
+
+async def send_msg(user_id, message):
+    try:
+        await message.copy(chat_id=user_id)
+        return 200, None
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        return send_msg(user_id, message)
+    except InputUserDeactivated:
+        return 400, f"{user_id} : deactivated\n"
+    except UserIsBlocked:
+        return 400, f"{user_id} : user is blocked\n"
+    except PeerIdInvalid:
+        return 400, f"{user_id} : user id invalid\n"
+    except Exception as e:
+        return 500, f"{user_id} : {traceback.format_exc()}\n"
+
+@Client.on_message(filters.incoming & filters.chat(-1001609244993))
 async def bchanl(bot, update, broadcast_ids={}): 
     all_users = await database.get_all_users()
     broadcast_msg= update
@@ -7,7 +59,7 @@ async def bchanl(bot, update, broadcast_ids={}):
         if not broadcast_ids.get(broadcast_id):
             break
 
-    out = await bot.send_message(-1001689365631,f"Ads Broadcast Started! You will be notified with log file when all the users are notified.")
+    out = await bot.send_message(-1001609244993,f"Ads Broadcast Started! You will be notified with log file when all the users are notified.")
     start_time = time.time()
     total_users = await db.total_users_count()
     done = 0
@@ -40,9 +92,9 @@ async def bchanl(bot, update, broadcast_ids={}):
     await out.delete()
     
     if failed == 0:
-        await bot.send_message(-1001689365631, f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
+        await bot.send_message(-1001609244993, f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
     else:
-        await bot.send_document(-1001689365631, 'broadcastlog.txt', caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
+        await bot.send_document(-1001609244993, 'broadcastlog.txt', caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
     os.remove('broadcastlog.txt') 
     
         
