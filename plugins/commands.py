@@ -28,9 +28,9 @@ async def start(bot, message):
                 InlineKeyboardButton('↗️Go inline↗️', switch_inline_query='')
             ]
         ]
-
+        
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply(START_MSG, reply_markup=reply_markup)
+        await message.reply_sticker("CAACAgUAAxkBAAEFHD5itTEihLwB5gABPP58guE5OLp9JRoAArQFAAIiWKlVyHUsM5q363opBA", START_MSG, reply_markup=reply_markup)
 
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
@@ -67,7 +67,7 @@ DEVS_BTN = InlineKeyboardMarkup([[
                  InlineKeyboardButton('Wisula', url='https://t.me/wisula4')
                  ],
                  [
-                 InlineKeyboardButton('🔙', callback_data="back")
+                 InlineKeyboardButton('Close🏷️', callback_data="back")
                  ]]
                   )
 
