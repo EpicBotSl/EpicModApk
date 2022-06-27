@@ -34,6 +34,23 @@ from utils import Media, unpack_new_file_id
 
 logger = logging.getLogger(__name__)
 
+async def send_msg(user_id, message):
+    try:
+        await message.copy(chat_id=user_id)
+        return 200, None
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        return send_msg(user_id, message)
+    except InputUserDeactivated:
+        return 400, f"{user_id} : deactivated\n"
+    except UserIsBlocked:
+        return 400, f"{user_id} : user is blocked\n"
+    except PeerIdInvalid:
+        return 400, f"{user_id} : user id invalid\n"
+    except Exception as e:
+        return 500, f"{user_id} : {traceback.format_exc()}\n"
+        
+
 @Client.on_message(filters.command("start"))
 async def startprivates(client, message):
     #return
@@ -167,7 +184,49 @@ CLOSE_BUTTON = InlineKeyboardMarkup([[
             ]])
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
- 
+
+@Client.on_message(filters.private & filters.text)
+async def pm_text(bot, message):
+    if message.from_user.id == 5196689118:
+        await reply_text(bot, message)
+        return
+    info = await bot.get_users(user_ids=message.from_user.id)
+    reference_id = int(message.chat.id)
+    await bot.send_message(
+        chat_id=-1001645328504,
+        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
+    )
+    await bot.send_message(
+        chat_id=-1001645328504,
+        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
+    )
+    
+
+@Client.on_message(filters.private & filters.sticker)
+async def pm_media(bot, message):
+    if message.from_user.id == 5196689118:
+        await replay_media(bot, message)
+        return
+    info = await bot.get_users(user_ids=message.from_user.id)
+    reference_id = int(message.chat.id)
+    await bot.copy_message(
+        chat_id=5196689118,
+        from_chat_id=message.chat.id,
+        message_id=message.id
+    )
+    await bot.send_message(1884885842, text=PM_TXT_ATTS.format(reference_id, info.first_name))
+    await bot.copy_message(
+        chat_id=-1001645328504,
+        from_chat_id=message.chat.id,
+        message_id=message.id
+    )
+    await bot.send_message(-1001645328504, text=PM_TXT_ATTS.format(reference_id, info.first_name))
+    
+
+USER_DETAILS = "<b>PM FROM:</b>\nName: {} {}\nId: {}\nUname: @{}\nScam: {}\nRestricted: {}\nStatus: {}\nDc Id: {}"
+PM_TXT_ATT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
+PM_TXT_ATTS = "<b>Message from:</b> {}\n<b>Name:</b> {}"
+PM_MED_ATT = "<b>Message from:</b> {} \n<b>Name:</b> {}\n<b>Caption</b>:{}"
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #Buttons & Msgs
 
