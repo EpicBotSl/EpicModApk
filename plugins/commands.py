@@ -85,7 +85,22 @@ async def tgm(bot, update):
              text="Help🔙"
          )
 
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+#State chek
 
+@Client.on_message(filters.command("state"))   
+async def startprivate(bot, message):
+    countb = await database.total_users_count()
+    countb = await database.total_users_count()
+    count = await bot.get_chat_members_count(-1001620454933)
+    counta = await bot.get_chat_members_count(-1001620454933)
+    text=f"""**🏅Bot Total Users**
+** 👥Members Counts in Our channel:**
+╔════════════════════════════════════════╗
+ **🌱Epic Bot Industrys Members**  🏅`{count}`
+ **⚡Epic App Store Bot Users**  🏅`{countb}`
+╚════════════════════════════════════════╝
+"""
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #Buttons & Msgs
 
