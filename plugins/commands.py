@@ -24,7 +24,7 @@ async def startprivate(client, message):
             )
         else:
             logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
-    file_id = "CAACAgUAAxkBAAEFIdBiuX5nHsyPq5HdZmuwIe7-FytWeAACwgYAAuTegVVpmAUvhqumMSkE"
+    file_id = "CAACAgUAAxkBAAEFIihiuYjFehkzzJg6fBsp9NSddE2QSQACsAYAAseOyVXbaQF75owUgCkE"
     await client.send_sticker(message.chat.id, file_id)
     text = f"Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
     reply_markup = Backbuttons  
@@ -41,11 +41,7 @@ database = Database(DATABASE_URI, "epic_bot")
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 @Client.on_callback_query()  
 async def tgm(bot, update):  
-    if update.data == "add": 
-        await update.answer(
-             text="♻️Adding Soon.....",
-        )
-    elif update.data == "DevsCallback":
+    if update.data == "DevsCallback":
          await update.message.edit_text(
              text=DEVS_MG,
              reply_markup=DEVS_BTN,
@@ -54,18 +50,7 @@ async def tgm(bot, update):
          await update.answer(
              text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰",
          )
-    elif update.data == "back":
-         await update.message.delete()
-         await bot.delete_message(update.chat.id, update.message.id)
-    elif update.data == "hlp":
-         await update.message.edit_text(
-             text=START_MSG,
-             reply_markup=Backbuttons,
-             disable_web_page_preview=True
-         )
-         await update.answer(
-             text="Back to main menu🔙",
-         )
+
 
 DEVS_BTN = InlineKeyboardMarkup([[
                  InlineKeyboardButton('Navanjana', url='https://t.me/NA_VA_N_JA_NA1'),
