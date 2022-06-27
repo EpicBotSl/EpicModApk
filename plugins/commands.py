@@ -89,7 +89,7 @@ async def tgm(bot, update):
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #State chek
 
-@Client.on_message(filters.command("state"))   
+@Client.on_message(filters.command("state") & filters.user(ADMINS))   
 async def startprivate(bot, message):
     countb = await database.total_users_count()
     countb = await database.total_users_count()
@@ -97,10 +97,10 @@ async def startprivate(bot, message):
     counta = await bot.get_chat_members_count(-1001620454933)
     text=f"""**🏅Bot Total Users**
 ** 👥Members Counts in Our channel:**
-╔═════════════════════════════════════════════════╗
- **🌱Epic Bot Industrys Members**  🏅`{count}`
- **⚡Epic App Store Bot Users**  🏅`{countb}`
-╚═════════════════════════════════════════════════╝
+╔═════════════════════════════════════════════╗
+       **🌱Epic Bot Industrys Members**  🏅`{count}`
+       **⚡Epic App Store Bot Users**  🏅`{countb}`
+╚═════════════════════════════════════════════╝
 """
 
     await bot.send_sticker(message.chat.id, random.choice(STAT_STICKER))
