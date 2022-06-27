@@ -59,11 +59,10 @@ async def tgm(bot, update):
    elif update.data == "back_Clbs":
          await update.message.edit_text(
              text=Back_Msg,
-             reply_markup=Backbuttons,
-             disable_web_page_preview=True
+             reply_markup=Backbuttons
          )
          await update.answer(
-             text="Menu 🔙",
+             text="Menu 🔙"
          )
 
 
