@@ -58,6 +58,23 @@ async def tgm(bot, update):
          )
 
 
+@Client.on_callback_query()  
+async def tgm(bot, update):  
+    if update.data == "add": 
+        await update.answer(
+             text="Epic Devs",
+        )
+    elif update.data == "back_Clbs":
+         await update.message.edit_text(
+             text=Back_Msg,
+             reply_markup=Backbuttons,
+             disable_web_page_preview=True
+         )
+         await update.answer(
+             text="Menu 🔙",
+         )
+
+
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #Buttons & Msgs
 
@@ -66,7 +83,7 @@ DEVS_BTN = InlineKeyboardMarkup([[
                  InlineKeyboardButton('Wisula', url='https://t.me/wisula4')
                  ],
                  [
-                 InlineKeyboardButton('🔙', callback_data="back")
+                 InlineKeyboardButton('🔙', callback_data="back_Clbs")
                  ]]
                   )
 
