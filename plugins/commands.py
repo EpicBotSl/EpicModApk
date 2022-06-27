@@ -15,12 +15,80 @@ async def start(bot, message):
     if len(message.command) > 1 and message.command[1] == 'subscribe':
         await message.reply(INVITE_MSG)
     else:
-        buttons = [[
-            InlineKeyboardButton('Search Here', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('Go Inline', switch_inline_query=''),
-        ]]
+        buttons = [
+            [
+                InlineKeyboardButton('👑Apk Database👑', url='https://t.me/EpicApkDatabase'),
+                InlineKeyboardButton('👩‍💻Bot Devs👩‍💻', callback_data="DevsCallback")
+            ],
+            [
+                InlineKeyboardButton('</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰', url='https://t.me/EpicBotsSl')
+            ],
+            [
+                InlineKeyboardButton('🔍Search here🔄', switch_inline_query_current_chat=''),
+                InlineKeyboardButton('↗️Go inline↗️', switch_inline_query='')
+            ]
+        ]
+
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(START_MSG, reply_markup=reply_markup)
+
+
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+@Client.on_callback_query()  
+async def tgm(bot, update):  
+    if update.data == "add": 
+        await update.answer(
+             text="♻️Adding Soon.....",
+        )
+    elif update.data == "DevsCallback":
+         await update.message.edit_text(
+             text=DEVS_MG,
+             reply_markup=DEVS_BTN,
+             disable_web_page_preview=True
+         )
+         await update.answer(
+             text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰",
+         )
+    elif update.data == "back":
+         await update.message.delete()
+         await bot.delete_message(update.chat.id, update.message.id)
+    elif update.data == "hlp":
+         await update.message.edit_text(
+             text=START_MSG,
+             reply_markup=Backbuttons,
+             disable_web_page_preview=True
+         )
+         await update.answer(
+             text="Back to main menu🔙",
+         )
+
+DEVS_BTN = InlineKeyboardMarkup([[
+                 InlineKeyboardButton('Navanjana', url='https://t.me/NA_VA_N_JA_NA1)
+                 InlineKeyboardButton('Wisula', url='https://t.me/wisula4)
+                 ],
+                 [
+                 InlineKeyboardButton('🔙', callback_data="back")
+                 ]]
+                  )
+
+DEVS_MG = "🌱We Are epic Developers 🌟"
+
+Backbuttons = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton('👑Apk Database👑', url='https://t.me/EpicApkDatabase'),
+                InlineKeyboardButton('👩‍💻Bot Devs👩‍💻', callback_data="DevsCallback")
+            ],
+            [
+                InlineKeyboardButton('</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰', url='https://t.me/EpicBotsSl')
+            ],
+            [
+                InlineKeyboardButton('🔍Search here🔄', switch_inline_query_current_chat=''),
+                InlineKeyboardButton('↗️Go inline↗️', switch_inline_query='')
+            ]
+        ])
+
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
@@ -52,7 +120,7 @@ async def channel_info(bot, message):
         os.remove(file)
 
 
-@Client.on_message(filters.command('total') & filters.user(ADMINS))
+@Client.on_message(filters.command('ttl') & filters.user(ADMINS))
 async def total(bot, message):
     """Show total files in database"""
     msg = await message.reply("Processing...⏳", quote=True)
