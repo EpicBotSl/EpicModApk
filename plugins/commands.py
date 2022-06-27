@@ -39,6 +39,8 @@ async def startprivate(client, message):
 DATABASE_URI=DATABASE_URI
 database = Database(DATABASE_URI, "epic_bot")     
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+#Callbacks
+
 @Client.on_callback_query()  
 async def tgm(bot, update):  
     if update.data == "DevsCallback":
@@ -51,13 +53,28 @@ async def tgm(bot, update):
              text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰",
          )
 
+@Client.on_callback_query()  
+async def tgm(bot, update):  
+    if update.data == "back":
+         await update.message.edit_text(
+             text=Back_Msg,
+             reply_markup=Backbuttons,
+             disable_web_page_preview=True
+         )
+         await update.answer(
+             text="Menu Backed 🔙",
+         )
+
+
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+#Buttons & Msgs
 
 DEVS_BTN = InlineKeyboardMarkup([[
                  InlineKeyboardButton('Navanjana', url='https://t.me/NA_VA_N_JA_NA1'),
                  InlineKeyboardButton('Wisula', url='https://t.me/wisula4')
                  ],
                  [
-                 InlineKeyboardButton('Close🏷️', callback_data="back")
+                 InlineKeyboardButton('🔙', callback_data="back")
                  ]]
                   )
 
@@ -78,6 +95,8 @@ Backbuttons = InlineKeyboardMarkup([[
                 InlineKeyboardButton('↗️Go inline↗️', switch_inline_query='')
             ]
         ])
+
+Back_Msg = "Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 
