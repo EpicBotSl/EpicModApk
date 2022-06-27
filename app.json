@@ -1,5 +1,5 @@
 {
-    "name": "Epic Media Search bot",
+    "name": "Epic Mod Apk Bot",
     "description": "When you going to send file on telegram channel/group this bot will save that in database, So you can search that easily in inline mode",
     "keywords": [
       "telegram",
@@ -12,8 +12,8 @@
       "index",
       "inline"
     ],
-    "website": "https://github.com/EpicBotSl/Media-Search-bot",
-    "repository": "https://github.com/EpicBotSl/Media-Search-bot",
+    "website": "https://github.com/EpicBotSl/EpicModApk",
+    "repository": "https://github.com/EpicBotSl/EpicModApk",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
