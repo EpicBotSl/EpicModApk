@@ -35,6 +35,10 @@ async def startprivate(client, message):
         quote=True
     )
         
+@Client.on_message(filters.command("help"))
+async def start(bot, message):
+  await message.reply_photo("https://telegra.ph/file/6b3bee7715543e8fd6afa.jpg",caption=helps_msg,reply_markup=Help_backbtn)
+
 
 DATABASE_URI=DATABASE_URI
 database = Database(DATABASE_URI, "epic_bot")     
@@ -64,6 +68,22 @@ async def tgm(bot, update):
          await update.answer(
              text="Menu 🔙"
          )
+    elif update.data == "HELP_CLB":
+         await update.message.edit_text(
+             text=helps_msg,
+             reply_markup=Help_backbtn
+         )
+         await update.answer(
+             text="This Is Help Menu🌹"
+         )
+    elif update.data == "HELP_BACK":
+         await update.message.edit_text(
+             text=Back_Msg,
+             reply_markup=Backbuttons
+         )
+         await update.answer(
+             text="Help🔙"
+         )
 
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
@@ -79,6 +99,32 @@ DEVS_BTN = InlineKeyboardMarkup([[
                   )
 
 DEVS_MG = "🌱We Are epic Developers 🌟"
+
+helps_msg = """
+⸙𝚃𝚑𝚒𝚜 𝙸𝚜 𝙴𝚙𝚒𝚌 𝙰𝚙𝚙 𝚂𝚝𝚘𝚛𝚎 𝙱𝚘𝚝𝚜 𝙷𝚎𝚕𝚙 𝚂𝚎𝚌𝚝𝚒𝚘𝚗!
+
+**𝚆𝚑𝚊𝚝 𝙲𝚊𝚗 𝙳𝚘 𝚃𝚑𝚒𝚜 𝙱𝚘𝚝?**
+
+➡𝚃𝚑𝚒𝚜 𝙱𝚘𝚝 𝚆𝚒𝚕𝚕 𝙱𝚎 𝚁𝚞𝚗𝚗𝚒𝚗𝚐 𝙾𝚗 𝙾𝚠𝚎𝚛 𝚊𝚙𝚔 𝚍𝚊𝚝𝚊𝚋𝚊𝚜𝚎.
+➡𝚃𝚑𝚒𝚜 𝙱𝚘𝚝 𝙷𝚊𝚟𝚎 
+      ▪𝙼𝚘𝚍 𝙰𝚙𝚔𝚜
+      ▪𝙿𝚛𝚎𝚖𝚒𝚞𝚖 𝙰𝚙𝚔𝚜
+      ▪𝙻𝚊𝚛𝚐𝚎 𝙰𝚙𝚔𝚜
+➡𝚃𝚑𝚒𝚎 𝙱𝚘𝚝 𝚆𝚘𝚛𝚔 𝙾𝙽 𝙸𝚗𝚕𝚒𝚗𝚎 𝙼𝚘𝚘𝚍 𝚂𝚠𝚑𝚒𝚝𝚑 𝙸𝚗𝚕𝚒𝚗𝚎 𝙼𝚘𝚘𝚍 𝙰𝚗 𝚂𝚎𝚊𝚛𝚌𝚑 𝙰𝚙𝚔𝚜
+
+✔𝙼𝚘𝚛𝚎 𝚄𝚙𝚍𝚊𝚝𝚎𝚜 
+     ▫ @EpicBotsSl
+✔𝚀𝚞𝚎𝚜𝚝𝚒𝚘𝚗𝚜 
+     ▫ @EpicChats
+✔𝙰𝚙𝚔 𝙳𝚊𝚝𝚊𝚋𝚊𝚜𝚎 
+     ▫ @EpicApkDatabase
+     
+                   `</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰2022©`
+"""
+
+Help_backbtn = InlineKeyboardMarkup([[
+                InlineKeyboardButton('🔙', callback_data="HELP_BACK")
+            ])
 
 Backbuttons = InlineKeyboardMarkup([[
                 InlineKeyboardButton('🆘HELP🆘', callback_data="HELP_CLB")
@@ -96,7 +142,7 @@ Backbuttons = InlineKeyboardMarkup([[
             ]
         ])
 
-Back_Msg = "Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
+Back_Msg = "Hi Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 
