@@ -152,7 +152,7 @@ async def statuds(bot, message):
 • **Send To:** [User](tg://user?id={fid}) [`{fid}`]
 • **Message:-**
 """)
-    await send_msg(PRIVATE_LOG, message=mesg)
+    await send_message(PRIVATE_LOG, message=messsage)
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 
