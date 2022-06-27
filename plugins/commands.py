@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 async def startprivate(client, message):
     #return
     chat_id = message.from_user.id
-    if not await db.is_user_exist(chat_id):
+    if not await database.is_user_exist(chat_id):
         data = await client.get_me()
         BOT_USERNAME = data.username
-        await db.add_user(chat_id)
+        await database.add_user(chat_id)
         if -1001645328504:
             await client.send_message(
                 -1001645328504,
