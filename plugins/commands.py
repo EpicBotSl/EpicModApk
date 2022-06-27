@@ -37,7 +37,7 @@ async def startprivate(client, message):
         
 
 DATABASE_URI=DATABASE_URI
-database = Database(DATABASE_URL, "epic_bot")     
+database = Database(DATABASE_URI, "epic_bot")     
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 @Client.on_callback_query()  
 async def tgm(bot, update):  
