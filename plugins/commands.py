@@ -50,7 +50,7 @@ async def tgm(bot, update):
              disable_web_page_preview=True
          )
          await update.answer(
-             text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰",
+             text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰"
          )
 
 @Client.on_callback_query()  
@@ -62,7 +62,7 @@ async def tgm(bot, update):
              disable_web_page_preview=True
          )
          await update.answer(
-             text="Menu Backed 🔙",
+             text="Menu Backed 🔙"
          )
 
 
