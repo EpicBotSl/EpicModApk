@@ -17,6 +17,12 @@ import datetime
 import os
 import random
 import logging
+from pyrogram.errors.exceptions.bad_request_400 import *
+from pyrogram.errors import *
+from pyrogram.types import *
+from helper.decorators import humanbytes
+from asyncio import *
+import requests
 from utils.database import Database
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -136,12 +142,15 @@ STAT_STICKER = ["CAACAgQAAxkBAAEFHRditZFgRBAPm-9bkFJUQKOjSEgxoQACfwsAAmgpeVF2roP
 #send mg#
 
 @Client.on_message(filters.command("send"))
-async def statuds(bot, message):
+async def status(bot, message):
     if message.from_user.id not in ADMINS:
         await message.delete()
         return
-    message=message.reply_to_message
-    await bot.send_message(user_id=fid, message=message)
+    mesg=message.reply_to_message
+    f= message.text
+    s=f.replace('/send ' ,'')
+    fid=s.replace('%20', ' ')
+    await send_msg(user_id=fid, message=mesg)
     await message.delete()
     await bot.send_message(message.chat.id, text=f"Ur Msg Sent To [User](tg://user?id={fid})", reply_markup=CLOSE_BUTTON)
     await bot.send_message(PRIVATE_LOG,text=f"""#SEND_LOG
@@ -149,8 +158,7 @@ async def statuds(bot, message):
 • **Send To:** [User](tg://user?id={fid}) [`{fid}`]
 • **Message:-**
 """)
-    await send_message(PRIVATE_LOG, message=messsage)
-
+    await send_msg(PRIVATE_LOG, message=mesg)
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 
 CLOSE_BUTTON = InlineKeyboardMarkup([[
@@ -158,28 +166,7 @@ CLOSE_BUTTON = InlineKeyboardMarkup([[
             ]])
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
-#Pm Texts
-
-@Client.on_message(filters.private & filters.text)
-async def pm_text(bot, message):
-    if message.from_user.id == 5196689118:
-        await reply_text(bot, message)
-        return
-    info = await bot.get_users(user_ids=message.from_user.id)
-    reference_id = int(message.chat.id)
-    await bot.send_message(
-        chat_id=5196689118,
-        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
-    )
-    await bot.send_message(
-        chat_id=-1001645328504,
-        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
-    )
-    
-USER_DETAILS = "<b>PM FROM:</b>\nName: {} {}\nId: {}\nUname: @{}\nScam: {}\nRestricted: {}\nStatus: {}\nDc Id: {}"
-PM_TXT_ATT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
-PM_TXT_ATTS = "<b>Message from:</b> {}\n<b>Name:</b> {}"
-PM_MED_ATT = "<b>Message from:</b> {} \n<b>Name:</b> {}\n<b>Caption</b>:{}"
+ 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #Buttons & Msgs
 
