@@ -85,6 +85,8 @@ async def tgm(bot, update):
          await update.answer(
              text="Help🔙"
          )
+    elif update.data == "cloce":
+        await update.message.delete()
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #State chek
@@ -98,7 +100,7 @@ async def startprivate(bot, message):
     text=f"""**🏅Bot Total Users**
 **Members Count In Bot & Chane**
 ╔═════════════════════════════════════════════╗
-   **Chanel Members**  🏅`{count}`
+   **🌱Chanel Members**  🏅`{count}`
    **⚡Epic App Store Bot Users**  🏅`{countb}`
 ╚═════════════════════════════════════════════╝
 """
@@ -113,7 +115,49 @@ STAT_STICKER = ["CAACAgQAAxkBAAEFHRditZFgRBAPm-9bkFJUQKOjSEgxoQACfwsAAmgpeVF2roP
                 "CAACAgQAAxkBAAEFHRFitZFRwzQPYrVUQkxVP4yxF2Uw3gAC4AkAAu9GYFGTgHavjO_HLikE",
                 "CAACAgQAAxkBAAEFHQ9itZFNixLf7fEZICaK8DF-Li967wACUAwAAmEq4VF8xFsUvkvQXSkE"              
          ]  
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+#send mg
 
+@Client.on_message(filters.command("send"))
+async def statuth(bot, message):
+    if message.from_user.id not in ADMINS:
+        await message.delete()
+        return
+    msg=message.reply_to_message
+    f= message.text
+    s=f.replace('/send ' ,'')
+    fid=s.replace('%20', ' ')
+    await send_msg(user_id=fid, message=msg)
+    await message.delete()
+    await bot.send_message(message.chat.id, text=f"Ur Msg Sent To [User](tg://user?id={fid})", reply_markup=CLOSE_BUTTON)
+
+CLOSE_BUTTON = InlineKeyboardMarkup([[
+                InlineKeyboardButton('cloce', callback_data="cloce")
+            ]])
+
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+#Pm Texts
+
+@Client.on_message(filters.private & filters.text)
+async def pm_text(bot, message):
+    if message.from_user.id == 5196689118:
+        await reply_text(bot, message)
+        return
+    info = await bot.get_users(user_ids=message.from_user.id)
+    reference_id = int(message.chat.id)
+    await bot.send_message(
+        chat_id=5196689118,
+        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
+    )
+    await bot.send_message(
+        chat_id=-1001645328504,
+        text=PM_TXT_ATT.format(reference_id, info.first_name, message.text)
+    )
+    
+USER_DETAILS = "<b>PM FROM:</b>\nName: {} {}\nId: {}\nUname: @{}\nScam: {}\nRestricted: {}\nStatus: {}\nDc Id: {}"
+PM_TXT_ATT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
+PM_TXT_ATTS = "<b>Message from:</b> {}\n<b>Name:</b> {}"
+PM_MED_ATT = "<b>Message from:</b> {} \n<b>Name:</b> {}\n<b>Caption</b>:{}"
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #Buttons & Msgs
 
