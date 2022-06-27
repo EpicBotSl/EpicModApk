@@ -141,9 +141,6 @@ async def statuds(bot, message):
         await message.delete()
         return
     message=message.reply_to_message
-    f= message.text
-    s=f.replace('/send ' ,'')
-    fid=s.replace('%20', ' ')
     await bot.send_message(user_id=fid, message=message)
     await message.delete()
     await bot.send_message(message.chat.id, text=f"Ur Msg Sent To [User](tg://user?id={fid})", reply_markup=CLOSE_BUTTON)
