@@ -50,6 +50,12 @@ async def send_msg(user_id, message):
     except Exception as e:
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+DATABASE_URI=DATABASE_URI
+database = Database(DATABASE_URI, "epic_bot")  
+#=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
+   
+
 @Client.on_message(filters.incoming & filters.chat(-1001609244993))
 async def bchanl(bot, update, broadcast_ids={}): 
     all_users = await database.get_all_users()
