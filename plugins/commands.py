@@ -1,6 +1,6 @@
 import os
 import logging
-from database.db import Database
+from utils.database import Database
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -25,9 +25,9 @@ async def startprivate(client, message):
         else:
             logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
     file_id = "CAADBQADowwAAretqFR36va45QlD0gI"
-    await client.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
+    await client.send_sticker(message.chat.id, file_id)
     text = f"Hi {message.from_user.mention}, Welcome to  MemeHub Telegram 🇱🇰 Official Bot"
-    reply_markup = START_BUTTON  
+    reply_markup = Backbuttons  
     await message.reply_text(
         text=text,
         reply_markup=reply_markup,
@@ -36,7 +36,8 @@ async def startprivate(client, message):
     )
         
 
-
+DATABASE_URL=DATABASE_URL
+database = Database(DATABASE_URL, "epic_bot")     
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 @Client.on_callback_query()  
 async def tgm(bot, update):  
