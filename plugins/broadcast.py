@@ -65,9 +65,9 @@ async def bchanl(bot, update, broadcast_ids={}):
         if not broadcast_ids.get(broadcast_id):
             break
 
-    out = await bot.send_message(-1001609244993,f"Ads Broadcast Started! You will be notified with log file when all the users are notified.")
+    out = await bot.send_message(-1001645328504,f"Ads Broadcast Started! You will be notified with log file when all the users are notified.")
     start_time = time.time()
-    total_users = await db.total_users_count()
+    total_users = await database.total_users_count()
     done = 0
     failed = 0
     success = 0
@@ -98,9 +98,9 @@ async def bchanl(bot, update, broadcast_ids={}):
     await out.delete()
     
     if failed == 0:
-        await bot.send_message(-1001609244993, f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
+        await bot.send_message(-1001645328504, f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
     else:
-        await bot.send_document(-1001609244993, 'broadcastlog.txt', caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
+        await bot.send_document(-1001645328504, 'broadcastlog.txt', caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.")
     os.remove('broadcastlog.txt') 
     
         
