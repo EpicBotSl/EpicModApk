@@ -96,10 +96,10 @@ async def startprivate(bot, message):
     count = await bot.get_chat_members_count(-1001620454933)
     counta = await bot.get_chat_members_count(-1001620454933)
     text=f"""**🏅Bot Total Users**
-** 👥Members Counts in Our channel:**
+**Members Count In Bot & Chane**
 ╔═════════════════════════════════════════════╗
-       **🌱Epic Bot Industrys Members**  🏅`{count}`
-       **⚡Epic App Store Bot Users**  🏅`{countb}`
+   **Chanel Members**  🏅`{count}`
+   **⚡Epic App Store Bot Users**  🏅`{countb}`
 ╚═════════════════════════════════════════════╝
 """
 
