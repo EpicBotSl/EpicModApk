@@ -30,7 +30,7 @@ async def start(bot, message):
         ]
         
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_sticker("CAACAgUAAxkBAAEFHD5itTEihLwB5gABPP58guE5OLp9JRoAArQFAAIiWKlVyHUsM5q363opBA", START_MSG, reply_markup=reply_markup)
+        await message.reply_sticker("CAACAgUAAxkBAAEFHD5itTEihLwB5gABPP58guE5OLp9JRoAArQFAAIiWKlVyHUsM5q363opBA", caption=START_MSG, reply_markup=reply_markup)
 
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
