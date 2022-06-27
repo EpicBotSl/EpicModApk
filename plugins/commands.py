@@ -10,7 +10,7 @@ from utils import Media, unpack_new_file_id
 logger = logging.getLogger(__name__)
 
 @Client.on_message(filters.command("start"))
-async def startprivate(client, message):
+async def startprivates(client, message):
     #return
     chat_id = message.from_user.id
     if not await database.is_user_exist(chat_id):
@@ -36,7 +36,7 @@ async def startprivate(client, message):
     )
         
 @Client.on_message(filters.command("help"))
-async def start(bot, message):
+async def help(bot, message):
   await message.reply_photo("https://telegra.ph/file/6b3bee7715543e8fd6afa.jpg",caption=helps_msg,reply_markup=Help_backbtn)
 
 
