@@ -36,7 +36,7 @@ async def startprivate(client, message):
     )
         
 
-DATABASE_URL=DATABASE_URL
+DATABASE_URI=DATABASE_URI
 database = Database(DATABASE_URL, "epic_bot")     
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 @Client.on_callback_query()  
