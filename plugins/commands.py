@@ -63,7 +63,7 @@ async def tgm(bot, update):
          )
 
 DEVS_BTN = InlineKeyboardMarkup([[
-                 InlineKeyboardButton('Navanjana', url='https://t.me/NA_VA_N_JA_NA1')
+                 InlineKeyboardButton('Navanjana', url='https://t.me/NA_VA_N_JA_NA1'),
                  InlineKeyboardButton('Wisula', url='https://t.me/wisula4')
                  ],
                  [
