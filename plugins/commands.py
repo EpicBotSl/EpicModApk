@@ -43,26 +43,18 @@ database = Database(DATABASE_URI, "epic_bot")
 
 @Client.on_callback_query()  
 async def tgm(bot, update):  
-    if update.data == "DevsCallback":
+    if update.data == "add": 
+        await update.answer(
+             text="Epic Devs",
+        )
+    elif update.data == "DevsCallback":
          await update.message.edit_text(
              text=DEVS_MG,
              reply_markup=DEVS_BTN,
              disable_web_page_preview=True
          )
          await update.answer(
-             text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰"
-         )
-
-@Client.on_callback_query()  
-async def tgm(bot, update):  
-    if update.data == "back":
-         await update.message.edit_text(
-             text=Back_Msg,
-             reply_markup=Backbuttons,
-             disable_web_page_preview=True
-         )
-         await update.answer(
-             text="Menu Backed 🔙"
+             text="</ᴇᴘɪᴄ ʙᴏᴛs <s/ʟ>🇱🇰",
          )
 
 
