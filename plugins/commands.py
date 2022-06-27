@@ -4,7 +4,7 @@ from utils.database import Database
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from info import START_MSG, CHANNELS, ADMINS, INVITE_MSG
+from info import START_MSG, CHANNELS, ADMINS, INVITE_MSG, DATABASE_URI
 from utils import Media, unpack_new_file_id
 
 logger = logging.getLogger(__name__)
