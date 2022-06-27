@@ -22,7 +22,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.types import *
 
-from info import START_MSG, CHANNELS, ADMINS, INVITE_MSG, DATABASE_URI
+from info import START_MSG, CHANNELS, ADMINS, INVITE_MSG, DATABASE_URI, PRIVATE_LOG
 from utils import Media, unpack_new_file_id
 
 logger = logging.getLogger(__name__)
