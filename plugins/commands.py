@@ -140,11 +140,11 @@ async def statuds(bot, message):
     if message.from_user.id not in ADMINS:
         await message.delete()
         return
-    mesg=message.reply_to_message
+    message=message.reply_to_message
     f= message.text
     s=f.replace('/send ' ,'')
     fid=s.replace('%20', ' ')
-    await send_msg(user_id=fid, message=mesg)
+    await bot.send_message(user_id=fid, message=message)
     await message.delete()
     await bot.send_message(message.chat.id, text=f"Ur Msg Sent To [User](tg://user?id={fid})", reply_markup=CLOSE_BUTTON)
     await bot.send_message(PRIVATE_LOG,text=f"""#SEND_LOG
