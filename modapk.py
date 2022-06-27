@@ -26,7 +26,7 @@ async def startprivate(client, message):
             logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
     file_id = "CAACAgUAAxkBAAEFIdBiuX5nHsyPq5HdZmuwIe7-FytWeAACwgYAAuTegVVpmAUvhqumMSkE"
     await client.send_sticker(message.chat.id, file_id)
-    text = f"Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 Click Help To more Helps⚡"
+    text = f"Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
     reply_markup = Backbuttons  
     await message.reply_text(
         text=text,
