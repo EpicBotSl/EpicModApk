@@ -45,6 +45,11 @@
             "value": "5196689118",
             "required": false
         },
+        "PRIVATE_LOG": {
+            "description": "pyrosb jdeubedbqs jw",
+            "value": "",
+            "required": false
+        },
         "AUTH_CHANNEL": {
             "description": "Username or ID of channel. Without subscribing this channel users cannot use bot.",
             "value": "-1001645328504",
