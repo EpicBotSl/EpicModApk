@@ -17,6 +17,7 @@ import datetime
 import os
 import random
 import logging
+from plugins.sinhala import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 from pyrogram.errors import *
 from pyrogram.types import *
@@ -68,7 +69,7 @@ async def startprivates(client, message):
             logging.info(f"#NewUser :- Name : {message.from_user.first_name} ID : {message.from_user.id}")
     file_id = "CAACAgUAAxkBAAEFIihiuYjFehkzzJg6fBsp9NSddE2QSQACsAYAAseOyVXbaQF75owUgCkE"
     await client.send_sticker(message.chat.id, file_id)
-    text = f"Hi {message.from_user.mention}, Welcome to **Epic App Store Bot**🎭 ✓Click Help To more Helps⚡"
+    text = f"Hi {message.from_user.mention}, 🌼Choose language To Start bot!"
     reply_markup = COMMAND_LANGBTN
     await message.reply_text(
         text=text,
