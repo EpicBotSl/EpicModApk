@@ -129,13 +129,15 @@ async def tgm(bot, update):
          )
     elif update.data == "START_SI":
          await update.message.edit_text(
-             text=Back_Msg,
+             text=SI_STARTM,
              reply_markup=SI_STARB
          )
          await update.answer(
-             text="Help🔙"
+             text="සාදරයෙන් පිළිගනිමු"
+         )
     elif update.data == "cloce":
         await update.message.delete()
+
 
 #=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•Epic Bots 2022© All Rights Resived•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=•=#
 #State chek
