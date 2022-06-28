@@ -36,6 +36,9 @@ SI_STARB = InlineKeyboardMarkup([[
             [
                 InlineKeyboardButton('🔍ඇප් සර්ච් කරම්න🔄', switch_inline_query_current_chat=''),
                 InlineKeyboardButton('↗️ශෙයාර් කරපම්↗️', switch_inline_query='')
+            ],
+            [
+                InlineKeyboardButton('🔄Switch Language', callback_data="CHANGE_LNG")
             ]
         ])
 
