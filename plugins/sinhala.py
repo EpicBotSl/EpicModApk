@@ -1,5 +1,6 @@
 from pyrogram.types import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from Pyrogram import *
 
 STARTCMD = "🌼Choose language To Start bot!"
 
