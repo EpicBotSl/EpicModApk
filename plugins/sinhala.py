@@ -1,3 +1,6 @@
+from pyrogram.types import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 STARTCMD = "🌼Choose language To Start bot!"
 
 COMMAND_LANGBTN = InlineKeyboardMarkup([[
