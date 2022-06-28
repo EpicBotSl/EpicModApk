@@ -127,6 +127,13 @@ async def tgm(bot, update):
          await update.answer(
              text="Help🔙"
          )
+    elif update.data == "START_SI":
+         await update.message.edit_text(
+             text=Back_Msg,
+             reply_markup=SI_STARB
+         )
+         await update.answer(
+             text="Help🔙"
     elif update.data == "cloce":
         await update.message.delete()
 
