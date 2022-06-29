@@ -170,7 +170,7 @@ STAT_STICKER = ["CAACAgQAAxkBAAEFHRditZFgRBAPm-9bkFJUQKOjSEgxoQACfwsAAmgpeVF2roP
 #send mg#
 
 @Client.on_message(filters.command("send"))
-async def status(bot, message):
+async def pendam(bot, message):
     if message.from_user.id not in ADMINS:
         await message.delete()
         return
